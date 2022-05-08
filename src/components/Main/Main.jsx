@@ -11,11 +11,8 @@ export const Main = () => {
     bottomText: '',
     randomImage: 'http://i.imgflip.com/1bij.jpg',
   });
+
   const [allMemeImages] = React.useState(memesData);
-  const [inputData, setInputData] = React.useState({
-    topText: '',
-    bottomText: '',
-  });
 
   const getMemeImage = () => {
     const memeArr = allMemeImages.data.memes;
@@ -27,7 +24,7 @@ export const Main = () => {
   };
 
   const handleChange = event => {
-    setInputData(prevState => {
+    setMeme(prevState => {
       return { ...prevState, [event.target.name]: event.target.value };
     });
   };
@@ -41,7 +38,7 @@ export const Main = () => {
           placeholder="Insert Top Text"
           type="text"
           name="topText"
-          value={inputData.topText}
+          value={meme.topText}
         />
         <input
           onChange={handleChange}
@@ -49,15 +46,15 @@ export const Main = () => {
           type="text"
           placeholder="Insert Bottom Text"
           name="bottomText"
-          value={inputData.bottomText}
+          value={meme.bottomText}
         />
         <button onClick={getMemeImage} className={styles.formBtn}>
           Get a new meme image 🖼
         </button>
       </div>
       <div className={styles.meme}>
-        <p className={cx('memeText', 'top')}>{inputData.topText}</p>
-        <p className={cx('memeText', 'bottom')}>{inputData.bottomText}</p>
+        <p className={cx('memeText', 'top')}>{meme.topText}</p>
+        <p className={cx('memeText', 'bottom')}>{meme.bottomText}</p>
         <img src={meme.randomImage} alt="Meme Image" className={styles.memeImage} />
       </div>
     </main>
