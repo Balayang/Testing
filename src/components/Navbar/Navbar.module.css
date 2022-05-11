@@ -1,0 +1,18 @@
+
+
+.navbar {
+  height: 55px;
+  width: 100%;
+  background-color: var(--red-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: normal;
+  text-transform: uppercase;
+}
