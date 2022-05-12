@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import classNames from 'classnames/bind';
 
@@ -5,7 +6,7 @@ import styles from './SideBar.module.css';
 
 const cx = classNames.bind(styles);
 
-export const SideBar = () => {
+export const SideBar = ({ country, humidity, wind, feelsLike }) => {
   return (
     <aside className={styles.sideBar}>
       <div className={styles.sidebarContainer}>
@@ -37,19 +38,19 @@ export const SideBar = () => {
         <ul className={styles.statusList}>
           <li>
             <p>Country</p>
-            <p className={cx('country', 'white')}>CZ</p>
+            <p className={cx('country', 'white')}>{country}</p>
           </li>
           <li>
             <p>Humidity</p>
-            <p className={cx('humidity', 'white')}>33%</p>
+            <p className={cx('humidity', 'white')}>{humidity}%</p>
           </li>
           <li>
             <p>Wind</p>
-            <p className={styles.white}>30km/h</p>
+            <p className={styles.white}>{wind}km/h</p>
           </li>
           <li>
             <p>Feels Like</p>
-            <p className={cx('feelsLike', 'white')}>30°</p>
+            <p className={cx('feelsLike', 'white')}>{feelsLike}°C</p>
           </li>
         </ul>
 
