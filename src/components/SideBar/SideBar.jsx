@@ -10,10 +10,10 @@ export const SideBar = ({ country, humidity, wind, feelsLike }) => {
   return (
     <aside className={styles.sideBar}>
       <div className={styles.sidebarContainer}>
-        <form autoComplete="off" className={styles.sideBarForm}>
+        <div className={styles.sideBarForm}>
           <input className={styles.locationInput} type="text" placeholder="Enter Location.." />
           <button></button>
-        </form>
+        </div>
 
         <div className={styles.spacer}></div>
 
