@@ -1,138 +1,59 @@
-.sideBar .white {
-  color: #fff;
+.sideBar {
+  color: white;
 }
 
-.sideBar .spacer {
+.spacer:lastchild {
+  margin-bottom: 20px;
+}
+.spacer {
   width: 100%;
   margin: 10px auto;
   height: 0.1px;
   background: var(--sidebar-primary);
 }
 
-.spacer:lastchild {
-  margin-bottom: 20px;
-}
-
-/* Overlay */
-.sideBar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #1a1a1a;
-  width: 100%;
-  height: 100%;
-  opacity: 0.45;
-  z-index: -1;
-}
-
 .sideBar {
-  background-color: transparent;
+  position: absolute;
   width: 40vw;
   height: 100vh;
   max-width: 400px;
-  position: absolute;
   right: 0;
-  backdrop-filter: blur(10px);
   top: 0;
-  padding: 0 50px;
+  padding: 3rem;
+  background-color: rgba(31, 28, 28, 0.381);
+  backdrop-filter: blur(10px);
   color: var(--sidebar-primary);
-}
-
-/* sideBar Container For Width Responsiveness */
-.sidebarContainer {
   display: flex;
-  height: 100vh;
   flex-direction: column;
   justify-content: space-between;
-  align-items: space-between;
 }
 
-/* sideBar Form */
-
-.sideBar #sideBarForm {
-  display: flex;
-  margin-top: 30px;
-  justify-content: space-between;
-}
-
-/* sideBar Form Input */
-.sideBar .sideBarForm input {
+.locationInput {
   background: none;
   color: var(--sidebar-primary);
   border: none;
-  font-size: 1rem;
   outline: none;
 }
 
-/* Changing Placeholder Color */
-.sideBar .sideBarForm input::placeholder {
+.locationInput::placeholder {
   color: var(--sidebar-primary);
   opacity: 0.8;
   font-size: 1rem;
 }
-
-/* Form Location Icon Button  */
-.sideBar .sideBarForm button {
-  border-radius: 50%;
-  width: 2.2rem;
-  height: 2rem;
-  background: none;
-  border: none;
+.sideBar li {
+  padding: 1rem;
+  list-style: none;
 }
 
-/* Form Location Icon */
-.sideBar .sideBarForm .locationIcon {
-  background: transparent;
-  border: none;
-  color: var(--sidebar-primary);
-  transition: color 0.5s;
+.city {
+  cursor: pointer;
 }
 
-.sideBar #sideBarForm .locationIcon:hover {
-  color: #fff;
+.city:hover {
+  color: white;
 }
 
-/* End of sideBar Form */
-
-.sideBar h4 {
-  padding: 10px 0;
-}
-
-/* sideBar Locations Buttons */
-
-.sideBar ul li .city {
-  background-color: transparent;
-  color: var(--sidebar-primary);
-  border-radius: 5px;
-  font-size: 1rem;
-  border: none;
-  outline: none;
-  transition: color 0.5s;
-}
-
-.sideBar ul li button:hover {
-  color: #fff;
-}
-
-.sideBar .statusList .country {
-  margin-right: 9px;
-  color: skyblue;
-  padding: 3px;
-  border: 1px solid #fff;
-}
-
-/* Margin Fixings */
-.sideBar .statusList .humidity {
-  margin-right: 5px;
-}
-
-.sideBar .statusList .feelsLike {
-  margin-right: 8px;
-}
-
-/* sideBar Paragraphs */
-.sideBar ul li {
+.statusList li {
   display: flex;
   justify-content: space-between;
   padding: 15px 0;

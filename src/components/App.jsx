@@ -73,7 +73,7 @@ export const App = () => {
       <div className="leftInfo">
         <p className="temperature">{weatherData.temperature}°C</p>
         <div className="locationInfo">
-          <h1 className="city">{weatherData.name}</h1>
+          <p className="city">{weatherData.name}</p>
           <p>16:37 - Tuesday, 5 Oct. 2021</p>
         </div>
         <div className="weatherStatus">

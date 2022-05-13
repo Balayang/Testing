@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&display=swap');
+
 :root {
   --sidebar-primary: #c0c0c0;
 }
@@ -10,6 +12,7 @@
 
 html {
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -21,7 +24,7 @@ html {
 }
 
 .leftInfo {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   margin-left: 3rem;
   padding: 0 20px;
   position: absolute;
@@ -30,9 +33,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   color: #fff;
-  text-shadow: 1px 1px 3px #999;
 }
 
 .temperature {
@@ -41,8 +42,7 @@ html {
 }
 
 .locationInfo {
-  text-align: center;
-  padding: 0 10px;
+  padding: 0 2rem;
 }
 
 .city {
@@ -55,7 +55,6 @@ html {
 }
 
 .weatherStatus {
-  text-align: center;
   padding: 0 20px;
   margin-top: 10px;
 }
