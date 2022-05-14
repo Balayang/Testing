@@ -22,7 +22,7 @@
   padding: 3rem;
   background-color: rgba(31, 28, 28, 0.381);
   backdrop-filter: blur(10px);
-  color: var(--sidebar-primary);
+  color: rgba(255, 255, 255, 0.808);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,13 +30,12 @@
 
 .locationInput {
   background: none;
-  color: var(--sidebar-primary);
   border: none;
   outline: none;
 }
 
 .locationInput::placeholder {
-  color: var(--sidebar-primary);
+  color: rgba(255, 255, 255, 0.808);
   opacity: 0.8;
   font-size: 1rem;
 }
