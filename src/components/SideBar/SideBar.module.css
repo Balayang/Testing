@@ -73,6 +73,7 @@
   .sideBar {
     width: 40vw;
     backdrop-filter: blur(0px);
+    padding: 1rem;
   }
 
   .sidebar,
@@ -85,39 +86,18 @@
   .sideBarItems {
     font-size: 1rem;
   }
-}
 
-/*
-.sidebar .status-list {
-  margin-bottom: 3.5rem;
-  color: #fff;
-  padding: 0 15px;
-}
+  .cities li {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
 
-.sidebar .status-list .country {
-  margin-right: 10px;
-  color: #fff;
-  border: 1px solid white;
-}
+  .locationInput::placeholder {
+    font-size: 0.8rem;
+  }
 
-.sidebar #sidebar-form {
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: 20px;
-  padding: 10px 15px;
-  margin-top: 5rem;
-  color: #fff;
+  .statusList li {
+    padding: 0.5rem 0;
+    font-size: 1em;
+  }
 }
-
-.sidebar #sidebar-form .location-icon {
-  color: #fff;
-}
-
-.sidebar #sidebar-form input,
-.sidebar #sidebar-form input::placeholder {
-  color: #fff;
-}
-
-.sidebar .status-list {
-  text-shadow: 1px 1px 5px #333;
-}
-*/

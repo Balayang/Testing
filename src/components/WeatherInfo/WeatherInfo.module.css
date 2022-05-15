@@ -41,7 +41,7 @@
   margin: -0.5rem 0;
 }
 
-@media (max-width: 48rem) {
+@media (max-width: 75rem) {
   .leftInfo {
     margin-left: 1.5rem;
     flex-direction: column;
@@ -51,6 +51,14 @@
     align-items: flex-start;
   }
 
+  .city,
+  .temperature {
+    font-size: 5rem;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 48rem) {
   .city,
   .temperature {
     font-size: 3rem;

@@ -3,6 +3,7 @@ import { SideBar } from './SideBar/SideBar';
 import { WeatherInfo } from './WeatherInfo/WeatherInfo';
 import { ErrorMessageElement } from './ErrorMessageElement/ErrorMessageElement';
 
+import '../styles/normalize.css';
 import '../styles/global.css';
 
 export const App = () => {
