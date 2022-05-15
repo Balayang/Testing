@@ -6,17 +6,27 @@ import styles from './SideBar.module.css';
 
 const cx = classNames.bind(styles);
 
-export const SideBar = ({ country, humidity, wind, feelsLike, setLocation, setSearchActive }) => {
-  const setCity = e => {
+export const SideBar = ({ country, humidity, wind, feelsLike, setLocation }) => {
+  const searchCity = e => {
     if (e.target.value !== '') {
       setLocation(e.target.value);
-      setSearchActive(true);
       console.log(location);
     } else {
-      setSearchActive(false);
       setLocation(undefined);
     }
   };
+
+  const citiesList = ['New York', 'Paris', 'Tokio'];
+
+  const cityElement = citiesList.map(city => {
+    return (
+      <li key={city}>
+        <p className={styles.city} onClick={() => setLocation(city)}>
+          {city}
+        </p>
+      </li>
+    );
+  });
 
   return (
     <aside className={styles.sideBar}>
@@ -24,24 +34,18 @@ export const SideBar = ({ country, humidity, wind, feelsLike, setLocation, setSe
         className={cx(styles.locationInput)}
         type="text"
         placeholder="Enter Location.."
-        onChange={setCity}
+        onChange={searchCity}
       />
 
       <div className={styles.spacer}></div>
 
       <ul className={styles.cities}>
         <li>
-          <p className={styles.city}>Tel Aviv</p>
+          <p className={styles.city} onClick={() => setLocation('')}>
+            My Location
+          </p>
         </li>
-        <li>
-          <p className={styles.city}>New York</p>
-        </li>
-        <li>
-          <p className={styles.city}>Tokyo</p>
-        </li>
-        <li>
-          <p className={styles.city}>Paris</p>
-        </li>
+        {cityElement}
       </ul>
 
       <div className={styles.spacer}></div>

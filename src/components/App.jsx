@@ -1,13 +1,14 @@
 import React from 'react';
 import { SideBar } from './SideBar/SideBar';
 import { WeatherInfo } from './WeatherInfo/WeatherInfo';
+import { ErrorMessageElement } from './ErrorMessageElement/ErrorMessageElement';
+
 import '../styles/global.css';
 
 export const App = () => {
   const [status, setStatus] = React.useState('LOADING');
   const [position, setPosition] = React.useState(undefined);
   const [location, setLocation] = React.useState(undefined);
-  const [searchActive, setSearchActive] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(undefined);
   const [weatherData, setWeatherData] = React.useState({
     name: undefined,
@@ -19,20 +20,11 @@ export const App = () => {
     feelsLike: undefined,
     icon: undefined,
   });
-  console.log(location);
-  console.log(searchActive);
 
   const getApiUrl = () =>
     !location
       ? `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
       : `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
-
-  console.log(getApiUrl);
-
-  //`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-
-  //const geolocation=`lat=${position.lat}&lon=${position.long}`
-  //const location = `q=${location}`
 
   React.useEffect(() => {
     if (!navigator.geolocation) {
@@ -72,8 +64,10 @@ export const App = () => {
   }, [position, location]);
 
   React.useEffect(() => {
-    if (weatherData && position) {
+    if ((weatherData && position) || (weatherData && location)) {
       setStatus('SUCCESS');
+    } else {
+      setStatus('LOADING');
     }
   }, [weatherData]);
 
@@ -94,31 +88,18 @@ export const App = () => {
               wind={weatherData.wind}
               feelsLike={weatherData.feelsLike}
               setLocation={setLocation}
-              setSearchActive={setSearchActive}
             />
           </>
         );
-      case 'ERROR':
-        return (
-          <div className="messageContainer">
-            <h1 className="message">{errorMessage}</h1>
-          </div>
-        );
-      case 'LOADING':
-        return (
-          <div className="messageContainer">
-            <h1 className="message">LOADING...</h1>
-          </div>
-        );
 
+      case 'ERROR':
+        return <ErrorMessageElement messageText={errorMessage} />;
+      case 'LOADING':
+        return <ErrorMessageElement messageText={'LOADING...'} />;
       default:
-        return (
-          <div className="messageContainer">
-            <h1 className="message">LOADING...</h1>
-          </div>
-        );
+        return <ErrorMessageElement messageText={'LOADING...'} />;
     }
   };
 
-  return <div className="container">{renderApp(status)}</div>;
+  return <main className="container">{renderApp(status)}</main>;
 };
