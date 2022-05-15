@@ -16,20 +16,53 @@
   font-weight: 300;
 }
 
-.locationInfo {
+.locationInfo,
+.weatherStatus {
   padding: 0 2rem;
 }
 
 .city {
-  font-size: 2.7rem;
+  font-size: 2.6rem;
   font-weight: 600;
+  line-height: 1;
 }
 
-.leftInfo .locationInfo .weatherStatus p {
+.date,
+.description {
   font-size: 1.3rem;
+  margin: 0;
 }
 
-.weatherStatus {
-  padding: 0 20px;
-  margin-top: 10px;
+.description {
+  line-height: 0;
+}
+
+.weatherIcon {
+  margin: -0.5rem 0;
+}
+
+@media (max-width: 48rem) {
+  .leftInfo {
+    margin-left: 1.5rem;
+    flex-direction: column;
+    height: 100vh;
+    width: 60vw;
+    margin: auto;
+    align-items: flex-start;
+  }
+
+  .city,
+  .temperature {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+}
+
+.temperature {
+  padding: 2rem;
+}
+
+.weatherIcon {
+  margin: auto;
+  padding: 0;
 }

@@ -16,11 +16,11 @@ export const SideBar = ({ country, humidity, wind, feelsLike, setLocation }) => 
     }
   };
 
-  const citiesList = ['New York', 'Paris', 'Tokio'];
+  const citiesList = ['Oslo', 'Paris', 'Madrid'];
 
   const cityElement = citiesList.map(city => {
     return (
-      <li key={city}>
+      <li key={city} className={styles.sideBarItems}>
         <p className={styles.city} onClick={() => setLocation(city)}>
           {city}
         </p>
@@ -33,15 +33,15 @@ export const SideBar = ({ country, humidity, wind, feelsLike, setLocation }) => 
       <input
         className={cx(styles.locationInput)}
         type="text"
-        placeholder="Enter Location.."
+        placeholder="Search Location.."
         onChange={searchCity}
       />
 
       <div className={styles.spacer}></div>
 
       <ul className={styles.cities}>
-        <li>
-          <p className={styles.city} onClick={() => setLocation('')}>
+        <li className={styles.sideBarItems}>
+          <p className={cx('city', 'white')} onClick={() => setLocation(undefined)}>
             My Location
           </p>
         </li>

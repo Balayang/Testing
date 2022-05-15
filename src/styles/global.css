@@ -15,10 +15,18 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
-main {
+body {
   position: relative;
   height: 100vh;
   margin: auto;
   overflow: hidden;
   background-image: url(/public/main-clear.jpeg);
+}
+
+@media (max-width: 36rem) {
+  body {
+    background-image: url(/public/phone-rainy.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }

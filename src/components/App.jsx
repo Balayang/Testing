@@ -21,6 +21,12 @@ export const App = () => {
     icon: undefined,
   });
 
+  const capitalize = str => {
+    const srtArr = str.toLowerCase().split(' ');
+    const capitalizedArr = srtArr.map(word => `${word[0].toUpperCase()}${word.slice(1)}`);
+    return capitalizedArr.join(' ');
+  };
+
   const getApiUrl = () =>
     !location
       ? `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
@@ -51,7 +57,7 @@ export const App = () => {
         name: rawData.name,
         temperature: Math.round(rawData.main.temp),
         country: rawData.sys.country,
-        description: rawData.weather[0].description,
+        description: capitalize(rawData.weather[0].description),
         humidity: rawData.main.humidity,
         wind: rawData.wind.speed,
         feelsLike: Math.round(rawData.main.feels_like),
