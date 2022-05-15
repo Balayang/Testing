@@ -6,6 +6,8 @@ import '../styles/global.css';
 export const App = () => {
   const [status, setStatus] = React.useState('LOADING');
   const [position, setPosition] = React.useState(undefined);
+  const [location, setLocation] = React.useState(undefined);
+  const [searchActive, setSearchActive] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(undefined);
   const [weatherData, setWeatherData] = React.useState({
     name: undefined,
@@ -17,9 +19,15 @@ export const App = () => {
     feelsLike: undefined,
     icon: undefined,
   });
+  console.log(location);
+  console.log(searchActive);
 
-  const getApiUrl = position =>
-    `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+  const getApiUrl = () =>
+    !location
+      ? `https://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+      : `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+
+  console.log(getApiUrl);
 
   //`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
 
@@ -46,7 +54,7 @@ export const App = () => {
 
   React.useEffect(() => {
     const getWeatherData = async () => {
-      const rawData = await (await fetch(getApiUrl(position))).json();
+      const rawData = await (await fetch(getApiUrl())).json();
       setWeatherData({
         name: rawData.name,
         temperature: Math.round(rawData.main.temp),
@@ -58,10 +66,10 @@ export const App = () => {
         icon: rawData.weather[0].icon,
       });
     };
-    if (position) {
-      getWeatherData(position);
+    if (position || location) {
+      getWeatherData();
     }
-  }, [position]);
+  }, [position, location]);
 
   React.useEffect(() => {
     if (weatherData && position) {
@@ -85,6 +93,8 @@ export const App = () => {
               humidity={weatherData.humidity}
               wind={weatherData.wind}
               feelsLike={weatherData.feelsLike}
+              setLocation={setLocation}
+              setSearchActive={setSearchActive}
             />
           </>
         );

@@ -6,20 +6,26 @@ import styles from './SideBar.module.css';
 
 const cx = classNames.bind(styles);
 
-export const SideBar = ({ country, humidity, wind, feelsLike, setPosition, setActiveSearch }) => {
-  const [value, setValue] = React.useState(undefined);
-
+export const SideBar = ({ country, humidity, wind, feelsLike, setLocation, setSearchActive }) => {
   const setCity = e => {
-    e.preventDefault();
-    if (value !== '') {
-      setActiveSearch(true);
-      setPosition(value);
+    if (e.target.value !== '') {
+      setLocation(e.target.value);
+      setSearchActive(true);
+      console.log(location);
+    } else {
+      setSearchActive(false);
+      setLocation(undefined);
     }
   };
 
   return (
     <aside className={styles.sideBar}>
-      <input className={cx(styles.locationInput)} type="text" placeholder="Enter Location.." />
+      <input
+        className={cx(styles.locationInput)}
+        type="text"
+        placeholder="Enter Location.."
+        onChange={setCity}
+      />
 
       <div className={styles.spacer}></div>
 
